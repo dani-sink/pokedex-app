@@ -1,0 +1,84 @@
+.logo-class {
+    width: auto;
+    height: auto;
+    color: #f0f0f0;
+    border-radius: 5px;
+    margin: 5px 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+.details-class {
+    width: 120px;
+    padding: 10px 20px;
+    height: auto;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+.logo-normal {
+    background-color: #aab09f;
+}
+.logo-grass {
+    background-color: #71c558 ;
+}
+.logo-electric {
+    background-color: #e5c531;
+}
+.logo-poison {
+    background-color: #b468b7;
+}
+.logo-fire {
+    background-color: #ea7a3c;
+}
+.logo-water {
+    background-color: #539ae2;
+}
+
+.logo-bug {
+    background-color: #94bc4a;
+}
+.logo-flying {
+    background-color: #7da6de;
+}
+
+.logo-dark {
+    background-color: #736c75;
+}
+
+.logo-dragon {
+    background-color: #6a7baf;
+}
+
+.logo-fairy {
+    background-color: #e397d1;
+}
+
+.logo-fighting {
+    background-color: #cb5f48;
+}
+
+.logo-ghost {
+    background-color: #846ab6;
+}
+
+.logo-ground {
+    background-color: #cc9f4f;
+}
+
+.logo-ice {
+    background-color: #70cbd4;
+}
+
+.logo-psychic {
+    background-color: #e5709b;
+}
+
+.logo-rock {
+    background-color: #b2a061;
+}
+
+.logo-steel {
+    background-color: #89a1b0;
+}

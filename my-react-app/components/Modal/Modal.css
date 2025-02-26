@@ -1,0 +1,94 @@
+
+.modal-background {
+    width: 100vw;
+    height: 100vh;
+    background: inherit;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.modal-container {
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.modal-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.modal-opened {
+    overflow-y: hidden;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(30px);
+    display: none;
+    transition: 0.5s ease-in-out;
+}
+
+.modal-body {
+    width: 80%;
+}
+
+.remove-footer {
+    z-index: unset;
+}
+
+.clear-all-btn {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding: 1rem;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #FF4C4C;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    border-radius: 3rem;
+    color: #fff;
+    border: none;
+}
+
+.modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0 0 0;
+
+}
+
+.apply-filters-btn {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding: 1rem;
+    border-radius: 3rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    border: none;
+    font-weight: bold;
+    font-weight: 500;
+    background-color: #4CAF50;
+    color: #fff;
+}

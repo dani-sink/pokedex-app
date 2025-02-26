@@ -1,0 +1,122 @@
+.pokedex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3rem 0
+}
+
+
+.name-and-filters {
+    margin: 2rem 0 3rem 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+    gap: 1rem;
+    
+}
+
+.pokemon-name {
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    background: #f2f2f2;
+    padding: 12px;
+    border-radius: 0.2rem;
+    width: 250px;
+    outline: none;
+    font-size: 15px;
+}
+
+.custom-field {
+    position: relative;
+    font-size: 15px;
+    padding-top: 20px;
+    margin-bottom: 20px; 
+}
+
+.custom-field .placeholder {
+    position: absolute;
+    left: 12px;
+    top: calc(50% + 20px);
+    color: #aaa;
+    transform: translateY(-20px);
+    transition: 
+        top 0.3s ease,
+        top 0.3s ease,
+        top 0.3s ease;
+}
+
+.custom-field.black > input {
+    background: none;
+    border: 2px solid #aaa;
+    transition: border-color 0.3s ease;
+}
+
+.custom-field.black > input:valid,
+.custom-field.black > input:focus
+ {
+    border-color: #222;
+    transition-delay: 0.1s;
+}
+
+.custom-field.black input + .placeholder {
+    padding: 0 2px;
+}
+
+.custom-field.black > input:valid + .placeholder,
+.custom-field.black > input:focus + .placeholder
+ {
+    top: 18px;
+    background: #FFF7ED;
+}
+
+.pokemon-name:valid + .placeholder, 
+.pokemon-name:focus + .placeholder {
+    top: 10px;
+    font-size: 15px;
+    color: #222;
+}
+
+.filter-icon {
+    width: 3rem;
+    height: 2.5rem;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.3s ease;
+    transition-delay: 0.001s;
+}
+
+.filter-icon:hover {
+    color: #222;
+}
+
+.filter-container {
+    position: relative;
+    right: 10px;
+    width: 5.5rem;
+    
+}
+
+.icon-text-placeholder {
+    width: 100%;
+    top: calc(50%);
+}
+
+.filter-container .icon-text-placeholder{
+    position: absolute;
+    right: 11px;
+    color: #aaa;
+    transform: translateY(-40px);
+    color: #FFF7ED;
+    transition:
+    color 0.5s ease;
+}
+
+
+.filter-container:hover > span {
+    /* transition-delay: 0.1s; */
+    color: #222;
+}

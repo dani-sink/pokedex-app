@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react"
 import PokemonTable from "./PokemonTable";
-import { getAllPokemons } from "../../api";
+import { getAllPokemonSpecies } from "../../api";
 
-
-
-export default function Pokedex(){
+const Pokedex2 = () => {
     const [pokemonData, setPokemonData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -12,10 +10,10 @@ export default function Pokedex(){
     
 
     useEffect(() => {
-        async function loadPokemons() {
+        async function loadPokemonSpecies() {
             setLoading(true)
             try {
-                const data = await getAllPokemons();
+                const data = await getAllPokemonSpecies();
                 setPokemonData(data);
             } catch (err) {
                 setError(err);
@@ -24,9 +22,11 @@ export default function Pokedex(){
             }
         }
 
-        loadPokemons();
+        loadPokemonSpecies();
 
     }, [])
+
+    console.log(pokemonData)
 
     return (
         <div>
@@ -43,3 +43,5 @@ export default function Pokedex(){
         </div>
     )
 }
+
+export default Pokedex2

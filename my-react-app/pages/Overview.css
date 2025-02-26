@@ -1,0 +1,231 @@
+.overview-container {
+    display: grid;
+    grid-template-rows: repeat(14, 120px);
+    grid-template-columns: 16.6666667% 16.6666667% 16.6666667% 16.6666667% 16.6666667% 16.6666667%;
+    height: 100%;
+    
+}
+
+.pokemon-overview-type-details-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.pokemon-overview-table {
+    border-collapse: collapse;
+    border-radius: 1rem 0 0 0;
+    text-align: center;
+    margin: 5px 0;
+}
+
+
+
+.pokemon-overview-table thead tr {
+    background: linear-gradient(135deg, #B22222, #B22222);
+    color: #fff;
+    font-weight: bold;
+    font-size: large;
+    text-align: left;
+}
+
+.pokemon-overview-table th,
+.pokemon-overview-table td {
+    padding: 12px 60px;
+    /* width: 200px; */
+    height: auto;
+    text-align: center;
+}
+
+.pokemon-overview-table tbody p {
+    font-weight: 600;
+    font-size: large;
+}
+.pokemon-overview-table tbody td {
+    border-bottom: 1px solid #ddd;
+    background-color: #f3f3f3;
+}
+
+
+
+
+.pokemon-overview-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 100%;
+}
+
+.overview-item {
+    background-color: red;
+    width: 100%;
+    height: auto;
+}
+
+.item-1 {
+    background-color: aqua;
+    grid-row: span 6;
+    grid-column: span 6;
+    
+}
+
+
+.item-2 {
+    background-color: greenyellow;
+    grid-row: span 5;
+    grid-column: span 3;
+}
+.item-3 {
+    background-color: orchid;
+    grid-row: span 4;
+    grid-column: span 3;
+}
+.item-4 {
+    grid-row: span 4;
+    background-color: goldenrod;
+    grid-column: span 3;
+}
+.item-5 {
+    background-color: pink;
+    grid-row: span 4;
+    grid-column: span 3;
+}
+
+.cry-container {
+    margin: 15px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-1, .item-2, .item-3, .item-4, .item-5 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-pause-icon {
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+}
+
+.pokemon-abilities-container {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    height: 400px;
+    margin: 20px 0;
+}
+
+.pokemon-ability-title-and-tooltip-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokemon-abilities-top-section-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokemon-abilities-container::-webkit-scrollbar {
+    display: none;
+}
+
+.pokemon-ability-attribute-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    text-align: left;
+}
+
+
+
+
+.pokemon-abilities-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    height: auto;
+    padding: 10px 20px;
+}
+
+
+
+.pokemon-ability-name-and-details-container {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.effect-text {
+    width: 100%;
+}
+
+.hidden-ability-name-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.hidden-ability-icon {
+    width: 25px;
+    height: auto;
+}
+
+.pokemon-ability-title-container {
+    background-color: #fbeaea;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #B22222;
+    font-size: larger;
+    border: 2px solid #B22222;
+}
+
+.information-icon {
+    width: 25px;
+    height: auto;
+    position: relative;
+    top: 2px;
+}
+
+
+.tooltip-list {
+    list-style: none;
+}
+
+.tooltip-list li {
+    margin: 10px 0;
+}
+
+.pokemon-ability-description-container {
+    width: 50%;
+    border-right: 2px solid #b22222;
+    padding: 10px 20px;
+}
+
+.abilities-count-and-tooltip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 50%;
+}

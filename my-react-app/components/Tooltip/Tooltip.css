@@ -1,0 +1,27 @@
+.tooltip-container {
+    position: relative;
+    display: flex;
+    height: auto;
+}
+
+
+
+.tooltip {
+    position: absolute;
+    top: calc(-100% - 90px);
+    right: calc(-100% - 140px);
+    width: 300px;
+    background-color: #fbeaea;
+    padding: 10px 15px;
+    border: 2px solid #b22222;
+    border-radius: 1rem;
+}
+
+.hidden {
+    position: absolute;
+    top: calc(-100% - 140px);
+    right: calc(-100% - 140px);
+    font-size:medium;
+    height: fit-content;
+    width: 200px;
+}

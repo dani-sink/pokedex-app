@@ -1,0 +1,97 @@
+.type-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    width: 100%;
+    height: 100%;
+    color: black;
+    background-color: #e7e7e7;
+    border-radius: 2rem;
+    transition: background-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
+}
+
+.type-btn-normal {
+    background-color: #aab09f;
+    box-shadow: #aab09f 0px 2.5px 10px;
+}
+
+.type-btn-grass {
+    background-color: #71c558 ;
+    box-shadow: #71c558 0px 2.5px 10px;
+}
+.type-btn-electric {
+    background-color: #e5c531;
+    box-shadow: #e5c531 0px 2.5px 10px;
+}
+.type-btn-poison {
+    background-color: #b468b7;
+    box-shadow: #b468b7 0px 2.5px 10px;
+}
+.type-btn-fire {
+    background-color: #ea7a3c;
+    box-shadow: #ea7a3c 0px 2.5px 10px;
+}
+.type-btn-water {
+    background-color: #539ae2;
+    box-shadow: #539ae2 0px 2.5px 10px;
+}
+
+.type-btn-bug {
+    background-color: #94bc4a;
+    box-shadow: #94bc4a 0px 2.5px 10px;
+}
+.type-btn-flying {
+    background-color: #7da6de;
+    box-shadow: #7da6de 0px 2.5px 10px;
+}
+
+.type-btn-dark {
+    background-color: #736c75;
+    box-shadow: #736c75 0px 2.5px 10px;
+}
+
+.type-btn-dragon {
+    background-color: #6a7baf;
+    box-shadow: #6a7baf 0px 2.5px 10px;
+}
+
+.type-btn-fairy {
+    background-color: #e397d1;
+    box-shadow: #e397d1 0px 2.5px 10px;
+}
+
+.type-btn-fighting {
+    background-color: #cb5f48;
+    box-shadow: #cb5f48 0px 2.5px 10px;
+}
+
+.type-btn-ghost {
+    background-color: #846ab6;
+    box-shadow: #846ab6 0px 2.5px 10px;
+}
+
+.type-btn-ground {
+    background-color: #cc9f4f;
+    box-shadow: #cc9f4f 0px 2.5px 10px;
+}
+
+.type-btn-ice {
+    background-color: #70cbd4;
+    box-shadow: #70cbd4 0px 2.5px 10px;
+}
+
+.type-btn-psychic {
+    background-color: #e5709b;
+    box-shadow: #e5709b 0px 2.5px 10px;
+}
+
+.type-btn-rock {
+    background-color: #b2a061;
+    box-shadow: #b2a061 0px 2.5px 10px;
+}
+
+.type-btn-steel {
+    background-color: #89a1b0;
+    box-shadow: #89a1b0 0px 2.5px 10px;
+}

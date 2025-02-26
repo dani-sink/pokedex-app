@@ -1,11 +1,10 @@
 import { Link, NavLink } from "react-router";
-
 export default function Header(){
 
     const activeStyle = {
         fontWeight: "bold",
         textDecoration: "none",
-        color: "#222224"
+        color: "#222224",
     }
 
     const inactiveStyle = {
@@ -15,10 +14,12 @@ export default function Header(){
     }
 
     return (
-        <header id="header-component">
+        <header className="header-component" id="header-component">
             
             <div className="left-header-section">
-                <Link to='/'><img src="../images/pokedex_logo.png" alt="" /></Link>
+                <Link to='/'>
+                    Home
+                </Link>
             </div>
             <div className="middle-header-section">
                 <ul className="header-list">

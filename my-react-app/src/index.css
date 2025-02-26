@@ -1,11 +1,14 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    padding: 0;
+    font-family: "Quicksand", serif;
 }
 
 html, body {
     background-color: #FFF7ED;
     font-family: "Inter", sans-serif;
+    min-height: 100%;
 }
 
 
@@ -13,12 +16,23 @@ html, body {
 header {
     position: sticky;
     top:0;
-    background-color: #ee1515;
+    background-color: #B22222;
     display: flex;
     transition: all .3s ease;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
+    z-index: 999;
+}
+
+.pokeball-logo {
+    width: 150px;
+    height: auto;
+}
+
+.pokeball-header {
+    width: 60px;
+    height: 60px;
+    margin: 0.5rem 0 0.5rem 1rem;
 }
 
 header.hide{
@@ -44,6 +58,7 @@ header.hide{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    position: relative;
 }
 
 main {
@@ -58,13 +73,17 @@ main {
     display: flex;
     gap: 4vw;
     color: #fdfdfd;
-    font-size: 1.25rem;;
+    font-size: 1.25rem;
 }
 
 
 footer {
     background-color: #222224;
     color: #fdfdfd;
+    z-index: 998;
+    flex-grow: 1;
 }
 
-
+.remove-header {
+    z-index: unset;
+}

@@ -1,14 +1,26 @@
-import { useEffect, useRef, useState } from 'react'
+import { createContext, useEffect, useRef, useState } from 'react'
 import ReactDOM, { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import NotFound from '../pages/NotFound'
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/Layout'
 import Home from '../pages/Home'
 import Pokedex from '../pages/Pokedex'
 import Help from '../pages/Help'
 import About from '../pages/About'
+import PokemonDetails from '../pages/PokemonDetails';
+import Pokedex2 from '../pages/Pokedex2';
+import LegendaryPokedex from '../pages/LegendaryPokedex';
+import MythicalPokedex from '../pages/MythicalPokedex';
+import StatsAndBattleInfo from '../pages/StatsAndBattleInfo';
+import Overview from '../pages/Overview';
+import Moves from '../pages/Moves';
+
+export const ThemeContext = createContext()
+
 
 function App() {
+
+    const [openModal, setOpenModal] = useState(false)
 
     //  Hide header on scroll down & show on scroll up 
 
@@ -19,6 +31,7 @@ function App() {
             . curDirection to hold the direction of the current scroll
             . prevDirection to hold the direction of the previous scroll
     */
+   
 
     let curScroll = window.scrollY || document.documentElement.scrollTop;
     let prevScroll = window.scrollY || document.documentElement.scrollTop;
@@ -97,17 +110,30 @@ function App() {
 
 
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path='/' element={<Layout/>} >
-                    <Route path='*' element={<NotFound/>} />
-                    <Route index element={<Home/>} />
-                    <Route path='/pokedex' element={<Pokedex/>}/>
-                    <Route path='/help' element={<Help/>}/>
-                    <Route path='/about' element={<About/>}/>
-                </Route>
-            </Routes>
-        </BrowserRouter>
+        <ThemeContext.Provider value={{openModal, setOpenModal}}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' element={<Layout/>} >
+                        <Route path='*' element={<NotFound/>} />
+                        <Route index element={<Home/>} />
+                        <Route path='/pokedex' element={<Pokedex/>}/>
+                        <Route 
+                            path='/pokedex/:name' 
+                            element={<PokemonDetails/>}
+                        >
+                            <Route index element={<Overview/>} />
+                            <Route path='stats' element={<StatsAndBattleInfo />} />
+                            <Route path='moves' element={<Moves />} />
+                        </Route>                    
+                        <Route path='/pokedex/species' element={<Pokedex2/>}/>
+                        <Route path='/pokedex/legendary' element={<LegendaryPokedex/>}/>
+                        <Route path='/pokedex/mythical' element={<MythicalPokedex/>}/>
+                        <Route path='/help' element={<Help/>}/>
+                        <Route path='/about' element={<About/>}/>
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </ThemeContext.Provider>
     )
 }
 

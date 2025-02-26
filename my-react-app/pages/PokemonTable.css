@@ -1,0 +1,82 @@
+.pokedex-table {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+
+
+
+.pokedex-table thead tr {
+    background-color: #B22222;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.pokedex-table th,
+.pokedex-table td {
+    padding: 13px 15px;
+}
+
+.pokedex-table td {
+    text-align:center;
+    font-weight: 600;
+}
+
+.pokedex-table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.pokedex-table tbody tr:last-of-type {
+    border-bottom: 2px solid #B22222;
+}
+
+
+.pokedex-table div {
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    padding: 10px;
+    width: 100%;
+    height: fit-content;
+}
+
+.sorted-attribute {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+
+.chosen-attribute {
+    background-color: #263740;
+}
+
+
+.sort-up, .sort-down {
+    
+    width: 20px;
+    height: 20px;
+}
+
+.sort-up {
+    position: relative;
+    right: 5px;
+    top: 1px;
+}
+.sort-down {
+    position: relative;
+    left: 15px;
+    top: 1px;
+}
+
+.show-sort-down, .show-sort-up {
+    color: transparent;
+}
+
+.table-header {
+    height: 120px;
+}
