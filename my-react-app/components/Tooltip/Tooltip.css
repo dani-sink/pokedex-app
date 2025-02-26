@@ -18,10 +18,12 @@
 }
 
 .hidden {
-    position: absolute;
+    position:absolute;
     top: calc(-100% - 140px);
-    right: calc(-100% - 140px);
+    right: calc(-100% - 160px);
     font-size:medium;
     height: fit-content;
-    width: 200px;
+    width: 300px;
+    z-index:auto;
+    
 }

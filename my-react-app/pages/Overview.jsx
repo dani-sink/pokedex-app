@@ -167,6 +167,7 @@ const Overview = () => {
               >
                 <RiInformationLine className='information-icon'/>
               </Tooltip>
+              
             </div>
           </div>
           <div className='pokemon-abilities-container'>
@@ -175,7 +176,10 @@ const Overview = () => {
                 <div 
                   key={ability.name} 
                   className='pokemon-ability-name-and-details-container'
-                  style={index === 0 ? {borderTop: '1px solid #ddd'} : null}
+                  style={
+                    index === 0 ? {borderTop: '2px solid #b22222'} 
+                  : index === pokemonAbilities.length - 1 ? {borderBottom: 'none'}  : null
+                }
                 >
                   <div className='pokemon-ability-title-container'>
                       { isHidden(ability.name) 
@@ -183,23 +187,24 @@ const Overview = () => {
                         (
                           <div className='hidden-ability-name-container'>
                             <p>{`${capitalize(ability.name)} ( Hidden )`}</p>
-                            <Tooltip 
-                              text={
-                                <ul className='tooltip-list'>
-                                  <li>A Hidden Ability is a rare Ability that a Pokémon does not normally have access to.</li>
-                                </ul>
-                              }
-                              hidden={true}
-                              >
-                                <RiInformationFill className='hidden-ability-icon'/>
-                            </Tooltip>   
+                            <RiInformationFill className='hidden-ability-icon'/>
                           </div>
+                          
                         )
-                      : capitalize(ability.name)
+                      : <p>{capitalize(ability.name)}</p>  
                       }
 
                   </div>
-                  <p>{getAbilityFlavorText(ability)}</p>
+                  <div className='pokemon-flavor-text-container'>
+                    <p>{getAbilityFlavorText(ability)}</p>
+                    {isHidden(ability.name) ? 
+                    <div className='hidden-ability-icon-note-container'>
+                      <RiInformationFill className='hidden-ability-icon-note'/>
+                      <p className='hidden-note' >A Hidden Ability is a rare Ability that a Pokémon does not normally have access to.</p> 
+                    </div>
+                    : null}
+
+                  </div>
                   <div>
                     <Dropdown 
                       buttonText={'Details'}
