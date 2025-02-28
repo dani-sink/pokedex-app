@@ -80,7 +80,7 @@
 }
 .item-3 {
     background-color: orchid;
-    grid-row: span 4;
+    grid-row: span 5;
     grid-column: span 3;
 }
 .item-4 {
@@ -118,7 +118,7 @@
 .pokemon-abilities-container {
     overflow-y: scroll;
     overflow-wrap: break-word;
-    scrollbar-width: none;
+    scrollbar-width: thin;
     height: 400px;
     margin: 20px 0;
     position: relative;
@@ -136,6 +136,11 @@
     font-size: large;
     font-weight: 500;
     height: auto;
+}
+
+.pokemon-flavor-text-container p {
+    font-weight: 600;
+    font-size: medium;
 }
 
 .hidden-note {
@@ -259,10 +264,97 @@
     padding: 10px 20px;
 }
 
+.pokemon-ability-description-container h4 {
+    font-size: medium;
+    font-weight: 500;
+}
+
+.abilities-count-and-tooltip h3 {
+    font-weight: 500;
+}
+
 .abilities-count-and-tooltip {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
     width: 50%;
+}
+
+.catch-rate-top-text-container {
+    border-bottom: 2px solid #B22222;
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.catch-rate-top-text-container p {
+    font-weight: 500;
+    width: 100%;
+}
+
+.pokeball-catch-rates-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 5px 15px 0 15px;
+}
+
+.pokeball-percentage-container {
+    border: 2px solid #b22222;
+    border-radius: 1rem;
+    padding: 2px 10px;
+    font-weight: 600;
+}
+
+.pokeball-img-and-percentage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.pokeball-img {
+    width: 40px;
+    height: auto;
+}
+
+.pokeball-example-text {
+    width: 100%;
+    font-weight: 500;
+}
+
+.catch-rate-midsection-container {
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-bottom: 2px solid #B22222;
+}
+
+.catch-rate-bottom-text {
+    font-size: medium;
+    width: 100%;
+}
+
+.catch-rate-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.catch-rate-bottom-section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    font-weight: 500;
+    padding: 5px 15px;
+    font-size: medium;
 }

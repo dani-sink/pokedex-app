@@ -8,6 +8,9 @@ import { FaCirclePlay, FaCirclePause } from "react-icons/fa6";
 import Dropdown from '../components/Dropdown/Dropdown'
 import Tooltip from '../components/Tooltip/Tooltip'
 import { RiInformationLine, RiInformationFill } from "react-icons/ri";
+import PokeBallImg from '../src/images/poke-ball.png'
+import GreatBallImg from '../src/images/great-ball.png'
+import UltraBallImg from '../src/images/ultra-ball.png'
 
 
 const Overview = () => {
@@ -15,6 +18,7 @@ const Overview = () => {
     const [currentAudio, setCurrentAudio] = useState(null)
 
     const capitalize = s => s && String(s[0]).toUpperCase() + String(s).slice(1)
+    const formatAbility = (str) => str.split(/[-\s]+/).map(word => capitalize(word)).join(' ');
 
     const getPokemonGenus = (pokemonSpeciesData) => {
       const genusEntry = pokemonSpeciesData?.genera?.find(entry => entry?.language?.name === "en");
@@ -98,6 +102,58 @@ const Overview = () => {
     const isHidden = (abilityName) => {
       const ability = pokemon.abilities.find(entry => entry.ability.name === abilityName)
       return ability.is_hidden;
+    }
+
+    const getPokemonHP = (poke, level) => {
+     const pokeBaseHP = poke.stats[0].base_stat;
+     const EV = 0;
+     const IV = 0;
+     return Math.floor(0.01 * (2 * pokeBaseHP + IV + Math.floor(0.25 * EV)) * level) + level + 10;
+    }
+
+    const getCaptureRate = (hp, catchRate, ballType) => {
+      let ballBonus = 1;
+      if (ballType === 'great ball') {
+        ballBonus = 1.5
+      } 
+      else if ( ballType === 'ultra ball') {
+        ballBonus = 2
+      } 
+
+      /* 
+        Assumptions for this sample:
+          . The pokemon is at level 61+
+          . The Individual value (IV) is 0.
+          . The Effort Value (EV) is 0.
+          . The pokemon is at Full Health with no status impairment such as Paralysis, Poison or Sleep.
+          . No Dark Grass ==> G = 1.
+          . We are catching the pokemon at lvl 61 with 0 badges, meaning the highest badge penalty possible.
+          . Since the pokemon is at level 61+, no Low-Level Modifier is applied.
+          . We use the default Difficulty Modifier.
+          . The Pokedex modifier is set to 0.
+          . No Catching Charm item
+      */
+
+      console.log(ballBonus)
+      let darkGrass = 1;
+      let badgePenalty = Math.pow(0.8, 8)
+      let low_level_modifier = 1;
+      let status = 1;
+      let difficulty_modifier = 1;
+      let pokedex_modifier = 0;
+      let catching_charm = 1
+
+
+      const captureRate = 
+        Math.abs(((3 * hp - 2 * hp) * darkGrass * catchRate * ballBonus * badgePenalty ) / (3 * hp)) 
+        * (low_level_modifier * status * difficulty_modifier)
+
+      const criticalCaptureRate = Math.abs(Math.min(255, captureRate) * pokedex_modifier * catching_charm / 6 )
+
+      let Y = Math.abs(65536 / (Math.pow(255/captureRate, 3/16)))
+      let probability_of_capture = Math.pow(Y / 65536, 4)
+      let final_capture_chance = probability_of_capture * 100
+      return final_capture_chance.toFixed(2)
     }
 
  
@@ -186,12 +242,12 @@ const Overview = () => {
                       ?
                         (
                           <div className='hidden-ability-name-container'>
-                            <p>{`${capitalize(ability.name)} ( Hidden )`}</p>
+                            <p>{`${formatAbility(ability.name)} ( Hidden )`}</p>
                             <RiInformationFill className='hidden-ability-icon'/>
                           </div>
                           
                         )
-                      : <p>{capitalize(ability.name)}</p>  
+                      : <p>{formatAbility(ability.name)}</p>  
                       }
 
                   </div>
@@ -231,7 +287,49 @@ const Overview = () => {
           
         </TextInfo>
       </div>
-      <div className='overview-item item-3'></div>
+      <div className='overview-item item-3'>
+        <TextInfo title={'Catch Rate'} width={'90%'} height={'90%'} color={'#F0EDEE'}>
+          <div className='catch-rate-container'>
+            <div className='catch-rate-top-text-container'>
+              <p>When a Poké Ball is thrown at a wild Pokémon, the game computes the Pokémon's catch rate 
+                and uses it in a formula to determine the chances of catching that Pokémon. To see how the catch rate is determined, <a href="">click here.</a>
+              </p>
+            </div>
+            <div className='catch-rate-midsection-container'>
+              
+              <p className='pokeball-example-text' >For example, the chances of catching {capitalize(pokemon.name)} on the first attempt with a Poke Ball, Great Ball and Ultra Ball respectively:</p>
+            
+              <div className='pokeball-catch-rates-container' >
+                <div className='pokeball-img-and-percentage-container' >
+                  <img className='pokeball-img' src={PokeBallImg} />
+                  <div className='pokeball-percentage-container'>
+                    <p>{`${getCaptureRate(getPokemonHP(pokemon, 61), pokemonSpecies.capture_rate, 'poke ball')} %`}</p>
+                  </div>
+                </div>
+                <div className='pokeball-img-and-percentage-container'>
+                  <img className='pokeball-img' src={GreatBallImg} />
+                  <div className='pokeball-percentage-container'>
+                    <p>{`${getCaptureRate(getPokemonHP(pokemon, 61), pokemonSpecies.capture_rate, 'great ball')} %`}</p>
+                  </div>
+                </div>
+                <div className='pokeball-img-and-percentage-container'>
+                  <img className='pokeball-img' src={UltraBallImg} />
+                  <div className='pokeball-percentage-container'>
+                    <p>{`${getCaptureRate(getPokemonHP(pokemon, 61), pokemonSpecies.capture_rate, 'ultra ball')} %`}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='catch-rate-bottom-section-container'>
+              <p className='catch-rate-bottom-text'>
+                Chances of capture are determined using the same algorithm as the one used in the current latest generation, Gen IX. 
+                To obtain these results, we created a sample situation with various assumptions such as the Pokemon's current level or the Trainer's 
+                Badge Penalty. To create your own sample, click <a href="">Here.</a> 
+              </p>
+            </div>
+          </div>
+        </TextInfo>
+      </div>
       <div className='overview-item item-4'></div>
       <div className='overview-item item-5'></div>
       
