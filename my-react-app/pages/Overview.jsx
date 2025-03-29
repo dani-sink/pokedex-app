@@ -13,6 +13,26 @@ import GreatBallImg from '../src/images/great-ball.png'
 import UltraBallImg from '../src/images/ultra-ball.png'
 
 
+const eggGroupDescriptions = {
+  "Monster": "Pokémon in this group are saurian or kaiju-like in appearance and nature.",
+  "Water 1": "This group consists of amphibious Pokémon, often capable of both land-based and aquatic locomotion.",
+  "Bug": "Comprising insectoid Pokémon, this group includes species resembling insects and similar arthropods.",
+  "Flying": "Members are avian Pokémon, typically based on birds and other flying creatures.",
+  "Field": "The largest Egg Group, containing a wide variety of terrestrial Pokémon.",
+  "Fairy": "This group includes petite and cute Pokémon, many of which are Fairy-type.",
+  "Grass": "Composed of plant-like Pokémon, most members are Grass-type.",
+  "Plant": "Composed of plant-like Pokémon, most members are Grass-type.",
+  "Human-Like": "Featuring fully bipedal humanoid Pokémon.",
+  "Water 3": "Members resemble aquatic invertebrates, with many being Water-type.",
+  "Mineral": "This group consists of inorganic Pokémon, often with rocky or metallic bodies.",
+  "Amorphous": "Comprising Pokémon with no definite form.",
+  "Water 2": "Members are piscine (fish-like) Pokémon.",
+  "Ditto": "Ditto is the sole member of this group, capable of breeding with almost any Pokémon.",
+  "Dragon": "Featuring reptilian or draconic Pokémon.",
+  "No Eggs Discovered": "This group includes Pokémon that cannot breed, such as baby and Legendary Pokémon."
+};
+
+
 const Overview = () => {
     const { pokemon, pokemonSpecies, pokemonAbilities } = useOutletContext()
     const [currentAudio, setCurrentAudio] = useState(null)
@@ -134,7 +154,6 @@ const Overview = () => {
           . No Catching Charm item
       */
 
-      console.log(ballBonus)
       let darkGrass = 1;
       let badgePenalty = Math.pow(0.8, 8)
       let low_level_modifier = 1;
@@ -154,6 +173,39 @@ const Overview = () => {
       let probability_of_capture = Math.pow(Y / 65536, 4)
       let final_capture_chance = probability_of_capture * 100
       return final_capture_chance.toFixed(2)
+    }
+
+    const getEffortValueYield = (poke) => {
+      let EV_arr = []
+      poke.stats.forEach((entry) => {
+        if (entry.effort > 0) {
+          let name_stat = ""
+          switch(entry.stat.name) {
+            case 'hp':
+              name_stat = "HP";
+              break;
+            case 'attack':
+              name_stat = "Attack";
+              break;
+            case 'defense':
+              name_stat = "Defense";
+              break;
+            case 'special-attack':
+              name_stat = "Sp. ATK";
+              break;
+            case 'special-defense':
+              name_stat = "Sp. DEF";
+              break;
+            case 'speed':
+              name_stat = "Speed";
+              break;
+            default:
+              name_stat = ""
+          }
+          EV_arr.push({name: name_stat, value: entry.effort})
+        }
+      })
+      return EV_arr;
     }
 
  
@@ -330,8 +382,56 @@ const Overview = () => {
           </div>
         </TextInfo>
       </div>
-      <div className='overview-item item-4'></div>
-      <div className='overview-item item-5'></div>
+      <div className='overview-item item-4'>
+        <TextInfo title={'Training'} width={'50%'} height={'85%'} color={'#fff'}>
+          <div className='training-table-container'>
+            <table className='training-table'>
+              <tr>
+                <th>Base Exp</th>
+                <td>{pokemon.base_experience}</td>
+              </tr>
+              <tr>
+                <th>Base Friendship</th>
+                <td>{pokemonSpecies.base_happiness}</td>
+              </tr>
+              <tr>
+                <th>EV yield</th>
+                <td>
+                  <ul>
+                    {getEffortValueYield(pokemon).map(entry => {
+                      return <li>{`${entry.value} ${entry.name}`}</li>
+                    })}
+                  </ul>
+                </td>
+              </tr>
+              <tr id='training-table-last-row'>
+                <th>Growth Rate</th>
+                <td>{formatAbility(pokemonSpecies.growth_rate.name)}</td>
+              </tr>
+            </table>
+          </div>
+        </TextInfo>
+        
+      </div>
+      <div className='overview-item item-5'>
+        <TextInfo title={'Breeding'} width={'80%'} height={'85%'} color={'#fff'}>
+            <div>
+              <h3>Egg Groups</h3>
+              {pokemonSpecies.egg_groups.map(entry => {
+                return (<div>
+                    <div>
+                      <h4>{capitalize(entry.name)}:</h4>
+                      <p>{eggGroupDescriptions[capitalize(entry.name)]}</p>
+                    </div>
+                  </div>)
+              })}
+            </div>
+            <div>
+              <h3>Egg Cycles:</h3>
+              <p>{pokemonSpecies.hatch_counter}</p>
+            </div>
+        </TextInfo>
+      </div>
       
     </div>
   )
